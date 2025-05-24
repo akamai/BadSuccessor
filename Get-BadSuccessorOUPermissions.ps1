@@ -72,6 +72,9 @@ function Get-BadSuccessorOUPermissions {
             if ($ace.AccessControlType -ne "Allow") {
                 continue
             }
+            if ($ace.PropagationFlags -eq "InheritOnly") { 
+                continue
+            }
             if ($ace.ActiveDirectoryRights -notmatch $relevantRights) {
                 continue
             }
